@@ -24,16 +24,19 @@ const material = new THREE.MeshStandardMaterial({
 const earthMesh = new THREE.Mesh(geometry, material);
 scene.add(earthMesh);
 
-const stars = getStarfield({ numStars: 20000 });
+const stars = getStarfield({ numStars: 2000 });
 scene.add(stars);
 
-const hemiLight = new THREE.HemisphereLight(0xffffff, 0x444444);
-scene.add(hemiLight);
+// const hemiLight = new THREE.HemisphereLight(0xffffff, 0x444444);
+// scene.add(hemiLight);
+const sunLight = new THREE.DirectionalLight(0xffffffff);
+sunLight.position.set(-2, -0.5, 1.5);
+scene.add(sunLight);
 
 function animate() {
   requestAnimationFrame(animate);
 
-  earthMesh.rotation.y += 0.002;
+  earthMesh.rotation.y += 0.0007;
   renderer.render(scene, camera);
 }
 
